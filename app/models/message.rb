@@ -3,5 +3,4 @@ class Message < ApplicationRecord
   has_many :users, through: :conversations
 
   validates :body, presence: true
-
 end

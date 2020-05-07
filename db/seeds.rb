@@ -1,7 +1,8 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+  admin = User.create(email: "charityconnectoradmin@email.com", password: "charity123connector456admin", first_name: "Guy", last_name: "Admin", role: "admin")
+  message1 = Message.create(body: "Hello and welcome to Charity Connector!")
+  convo1 = Conversation.create(user_id: 1, message_id: 1)
+  org1 = Organization.create(name: "ACLU of Massachusetts", category: "Human Services", ein: 47-3686152)
+  volunteer = User.create(email: "volunteer@fake.com", password: "123456", first_name: "Val", last_name: "Untir", role: "volunteer")
+  rep = User.create(email: "representative@fake.com", password: "123456", first_name: "Deb", last_name: "Resentative", role: "representative")
+  rela1 = Relationship.create(user_id: 2, organization_id: 1)
+  rela2 = Relationship.create(user_id: 3, organization_id: 1)
