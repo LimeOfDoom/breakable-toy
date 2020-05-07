@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
   root 'homes#index'
 
-  get "/restaurants", to: 'static_pages#index'
-  get "/restaurants/new", to: 'static_pages#index'
-  get "/restaurants/:id", to: 'static_pages#index'
-  get "/restaurants/:id/edit", to: 'static_pages#index'
+  devise_for :users
+
+  get "/", to: 'homes#index'
+  get "/users", to: 'homes#index'
+  get "/users/:id", to: 'homes#index'
+  
+  get "/organizations", to: 'homes#index'
+  get "/organizations/:id", to: 'homes#index'
 
   namespace :api do
     namespace :v1 do
@@ -14,5 +18,10 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users
+  namespace :api do
+    namespace :v1 do
+      resources :organizations, only: [:index, :show]
+    end
+  end
+
 end
