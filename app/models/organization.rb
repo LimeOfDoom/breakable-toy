@@ -4,5 +4,4 @@ class Organization < ApplicationRecord
 
   validates :name, :category, presence: true
   validates :ein, uniqueness: true
-
 end
