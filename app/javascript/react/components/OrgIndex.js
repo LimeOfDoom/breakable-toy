@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-import VolunteerIndexTile from './VolunteerIndexTile'
+import OrgIndexTile from './OrgIndexTile'
 
-const VolunteerIndex = props => {
-  const [volunteers, setVolunteers] = useState([])
+const OrgIndex = props => {
+  const [organizations, setOrganizations] = useState([])
 
   useEffect(()=> {
-    fetch('/api/v1/users', {
+    fetch('/api/v1/organizations', {
       credentials: "same-origin"
     })
     .then(response => {
@@ -20,29 +20,27 @@ const VolunteerIndex = props => {
       }
     })
     .then(response => response.json())
-    .then(parsedVolunteers => {
-      setVolunteers(parsedVolunteers)
+    .then(parsedOrganizations => {
+      setOrganizations(parsedOrganizations)
     })
     .catch(error => console.error(`Error in fetch: ${errorMessage}`))
   }, [])
 
 
-  const volunteersList = volunteers.map(volunteer => {
-    if (volunteer.role == "volunteer") {
-      return (
-        <VolunteerIndexTile
-          key={volunteer.id}
-          volunteer={volunteer}
-        />
-      )
-    }
+  const organizationsList = organizations.map(organization => {
+    return (
+      <OrgIndexTile
+        key={organization.id}
+        organization={organization}
+      />
+    )
   })
 
  return (
     <div>
-      {volunteersList}
+      {organizationsList}
     </div>
   )
 }
 
-export default VolunteerIndex
+export default OrgIndex
