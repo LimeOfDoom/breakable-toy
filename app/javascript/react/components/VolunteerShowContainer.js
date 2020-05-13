@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import VolunteerShowTile from './VolunteerShowTile'
 
 const VolunteerShowContainer = props => {
@@ -31,12 +31,22 @@ const VolunteerShowContainer = props => {
 
   return (
     <div>
-      {errors}
-      <VolunteerShowTile
-        volunteer={volunteer}
-        id={volunteerId}
-      />
+      <div className="callout center-this">
+        <div className="grid-container gimme-space">
+          {errors}
+          <VolunteerShowTile
+            volunteer={volunteer}
+            id={volunteerId}
+          />
+        </div>
+      </div>
+      <div className="bottom-bar">
+        <p>
+          <Link to='/users'><strong>Back to all the Volunteers</strong></Link> or
+          <Link to='/organizations'><strong> See the Non-Profits</strong></Link>
+        </p>
     </div>
+  </div>
   )
 }
 

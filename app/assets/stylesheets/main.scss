@@ -1,0 +1,77 @@
+body {
+  text-align: center;
+  background-color: #A2E3C4;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center fixed;
+  color: #F4F4ED;
+}
+
+a {
+  color: #F4F4ED;
+}
+
+a:visited {
+  color: #F4F4ED;
+}
+
+a:hover {
+  color: #A6E6C8;
+}
+
+.top-bar {
+  background-color: #50514F;
+}
+
+.top-bar-section, .right, .log-in-log-out {
+  background-color: #50514F;
+}
+
+.grid-x {
+  margin: 15px 25px 15px 25px;
+}
+
+.callout {
+  margin: 15px 15px 15px 15px;
+  background-color: #25A18E;
+  color: #F4F4ED;
+  padding: 60px 10px 60px 10px;
+  border: thick double #004E64;
+}
+
+.boxout {
+  margin: 15px 15px 15px 15px;
+  color: #F4F4ED;
+  padding: 50px 5px 50px 5px;
+  border: thick double #004E64;
+}
+
+.names-big {
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+.center-this {
+  margin: auto;
+  margin-top: 30px;
+  border: 3px solid #004E64;
+  padding: 10px;
+}
+
+.bottom-bar {
+   background-color: #50514F;
+   color: #F4F4ED;
+   position: fixed;
+   bottom: 0px;
+   width: 100%;
+   padding: 30px;
+}
+
+.gimme-space {
+  margin-top: 10px;
+  margin-bottom: 10%;
+}
+
+.cell {
+  margin: 20px 20px 20px 50px;
+}

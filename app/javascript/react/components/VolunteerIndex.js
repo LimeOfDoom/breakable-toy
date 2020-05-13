@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import VolunteerIndexTile from './VolunteerIndexTile'
 
 const VolunteerIndex = props => {
+  const [errors, setErrors] = useState(null)
   const [volunteers, setVolunteers] = useState([])
 
   useEffect(()=> {
@@ -39,9 +40,17 @@ const VolunteerIndex = props => {
   })
 
  return (
-    <div>
-      {volunteersList}
+   <div>
+    <div className="callout">
+      <div>
+        {errors}
+        {volunteersList}
+      </div>
     </div>
+    <div className="bottom-bar">
+      <Link to='/organizations'><strong>See the Non-Profits</strong></Link>
+    </div>
+  </div>
   )
 }
 

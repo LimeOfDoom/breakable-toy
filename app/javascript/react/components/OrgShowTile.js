@@ -5,7 +5,9 @@ const OrgShowTile = props => {
 
   return(
     <div>
-      <h2>{props.organization.name}</h2>
+      <div className="boxout">
+        <h2 className="names-big">{props.organization.name}</h2>
+      </div>
     </div>
   )
 }

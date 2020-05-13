@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import OrgIndexTile from './OrgIndexTile'
 
 const OrgIndex = props => {
+  const [errors, setErrors] = useState(null)
   const [organizations, setOrganizations] = useState([])
 
   useEffect(()=> {
@@ -37,9 +38,15 @@ const OrgIndex = props => {
   })
 
  return (
-    <div>
+   <div>
+    <div className="callout">
+      {errors}
       {organizationsList}
     </div>
+    <div className="bottom-bar">
+      <Link to='/users'><strong>See the Volunteers</strong></Link>
+    </div>
+  </div>
   )
 }
 
