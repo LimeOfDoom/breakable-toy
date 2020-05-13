@@ -21,7 +21,7 @@ const OrgIndex = props => {
     })
     .then(response => response.json())
     .then(parsedOrganizations => {
-      setOrganizations(parsedOrganizations)
+      setOrganizations(parsedOrganizations.organizations)
     })
     .catch(error => console.error(`Error in fetch: ${errorMessage}`))
   }, [])

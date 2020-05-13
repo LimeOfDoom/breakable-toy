@@ -1,7 +1,5 @@
 class Organization < ApplicationRecord
-  has_many :relationships
-  has_many :users, through: :relationships
+  has_many :users
 
-  validates :name, :category, presence: true
-  validates :ein, uniqueness: true
+  validates :name, :category, :city, :state, presence: true
 end

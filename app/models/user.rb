@@ -4,16 +4,22 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-         has_many :conversations
-         has_many :messages, through: :conversations
-
-         has_many :relationships
-         has_many :organizations, through: :relationships
+         belongs_to :organization, optional: true
 
          validates :first_name, :last_name, :role, presence: true
+
+         acts_as_messageable
 
   def admin?
     role == "admin"
   end
-  
+
+  def name
+    return '#{first_name} #{last_name}'
+  end
+
+  def mailboxer_email(object)
+    return self.email
+  end
+
 end
