@@ -21,7 +21,7 @@ const VolunteerIndex = props => {
     })
     .then(response => response.json())
     .then(parsedVolunteers => {
-      setVolunteers(parsedVolunteers)
+      setVolunteers(parsedVolunteers.users)
     })
     .catch(error => console.error(`Error in fetch: ${errorMessage}`))
   }, [])

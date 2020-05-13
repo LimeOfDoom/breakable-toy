@@ -24,7 +24,7 @@ const OrgShowContainer = props => {
     })
     .then(response => response.json())
     .then(parsedOrganization => {
-      setOrganization(parsedOrganization)
+      setOrganization(parsedOrganization.organization)
     })
     .catch(error => console.error(`Error in fetch: ${errorMessage}`))
   }, [])

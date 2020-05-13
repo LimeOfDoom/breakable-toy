@@ -8,4 +8,10 @@ class Api::V1::UsersController < ApplicationController
   def show
     render json: User.find(params[:id])
   end
+
+  private
+
+  def serialized_data(data, serializer)
+    ActiveModelSerializers::SerializableResource.new(data, each_serializer: serializer, scope: current_user)
+  end
 end

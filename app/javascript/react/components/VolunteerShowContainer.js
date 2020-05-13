@@ -24,7 +24,7 @@ const VolunteerShowContainer = props => {
     })
     .then(response => response.json())
     .then(parsedVolunteer => {
-      setVolunteer(parsedVolunteer)
+      setVolunteer(parsedVolunteer.user)
     })
     .catch(error => console.error(`Error in fetch: ${errorMessage}`))
   }, [])
