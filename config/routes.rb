@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   get "/organizations", to: 'homes#index'
   get "/organizations/:id", to: 'homes#index'
+  get "/organizations/:id/users/:id", to: 'homes#index'
 
   namespace :api do
     namespace :v1 do
