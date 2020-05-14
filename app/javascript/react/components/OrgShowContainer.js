@@ -43,7 +43,7 @@ const OrgShowContainer = props => {
   })
 
   return (
-    <div>
+    <div className="gimme-space">
       <div className="callout">
         <div>
           {errors}
@@ -55,7 +55,7 @@ const OrgShowContainer = props => {
             Representatives
           </h4>
         </div>
-      <div className="callout">
+      <div>
         {repList}
       </div>
     </div>

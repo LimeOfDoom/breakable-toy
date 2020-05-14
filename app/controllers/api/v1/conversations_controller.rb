@@ -45,7 +45,6 @@ class Api::V1::ConversationsController < ApplicationController
   end
 
   def conversation
-    binding.pry
     @conversation ||= mailbox.conversations.find(params[:id])
   end
 end

@@ -29,7 +29,7 @@ const VolunteerIndex = props => {
 
 
   const volunteersList = volunteers.map(volunteer => {
-    if (volunteer.role == "volunteer") {
+    if (volunteer.role.toLowerCase() == "volunteer") {
       return (
         <VolunteerIndexTile
           key={volunteer.id}
@@ -40,7 +40,7 @@ const VolunteerIndex = props => {
   })
 
  return (
-   <div>
+   <div className="gimme-space">
     <div className="callout">
       <div>
         {errors}
