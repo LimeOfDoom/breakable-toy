@@ -19,7 +19,7 @@ a:hover {
   color: #A6E6C8;
 }
 
-.top-bar {
+.top-bar, .top-bar-text, ul {
   background-color: #50514F;
 }
 
@@ -39,6 +39,16 @@ a:hover {
   padding: 10px;
   color: #F4F4ED;
   padding: 60px 10px 60px 10px;
+  border: thick double #004E64;
+}
+
+#flash-messages {
+  margin: auto;
+  width: 575px;
+  margin-top: 5px;
+  background-color: #25A18E;
+  padding: 5px;
+  color: #F4F4ED;
   border: thick double #004E64;
 }
 
