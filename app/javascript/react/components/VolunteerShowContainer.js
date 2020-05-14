@@ -30,9 +30,9 @@ const VolunteerShowContainer = props => {
   }, [])
 
   return (
-    <div>
-      <div className="callout center-this">
-        <div className="grid-container gimme-space">
+    <div className="gimme-space">
+      <div className="callout">
+        <div className="grid-container">
           {errors}
           <VolunteerShowTile
             volunteer={volunteer}

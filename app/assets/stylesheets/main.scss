@@ -32,8 +32,11 @@ a:hover {
 }
 
 .callout {
-  margin: 15px 15px 15px 15px;
+  margin: auto;
+  width: 575px;
+  margin-top: 30px;
   background-color: #25A18E;
+  padding: 10px;
   color: #F4F4ED;
   padding: 60px 10px 60px 10px;
   border: thick double #004E64;
@@ -70,6 +73,7 @@ a:hover {
 .gimme-space {
   margin-top: 10px;
   margin-bottom: 10%;
+  padding-bottom: 30px;
 }
 
 .cell {

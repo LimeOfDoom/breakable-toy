@@ -38,7 +38,7 @@ const OrgIndex = props => {
   })
 
  return (
-   <div>
+   <div className="gimme-space">
     <div className="callout">
       {errors}
       {organizationsList}

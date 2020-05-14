@@ -1,6 +1,6 @@
-<div>
-  <h2 class="boxout names-big">Forgot your password?</h2>
-  <div class="form-box gimme-space">
+<div class="gimme-space">
+  <h2 class="callout names-big">Forgot your password?</h2>
+  <div class="form-box">
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
