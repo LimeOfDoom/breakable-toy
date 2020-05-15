@@ -5,30 +5,29 @@ class Api::V1::ConversationsController < ApplicationController
 
   def index
     @user = User.find(params[:id])
-    @conversations = @target_mailbox.inbox.all
-    render json: @conversations
+    conversation_messages = conversation.messages.order(created_at: :desc)
+    render json: conversation_messages
   end
 
-  # def show
-  #   user = User.find(params[:id])
-  #   conversation_messages = conversation.messages
-  #   render json: conversation_messages
-  # end
-  #
-  # def reply
-  #  current_user.reply_to_conversation(conversation, params[:body])
-  #  redirect_to conversation_path(@conversation)
-  # end
-  #
+  def show
+    user = User.find(params[:id])
+    conversation_messages = conversation.messages.order(created_at: :desc)
+    render json: conversation_messages
+  end
+
+   def reply
+    current_user.reply_to_conversation(conversation, conversation_params[:body])
+  end
+
   # def trashbin
   #   @trash ||= current_user.mailbox.trash.all
   # end
-  #
+
   # def trash
   #   conversation.move_to_trash(current_user)
   #   redirect_to :conversations
   # end
-  #
+
   # def untrash
   #   conversation.untrash(current_user)
   #   redirect_to :back
