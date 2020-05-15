@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'homes#index'
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
 
   resources :welcomes, only: [:index]
 
@@ -13,32 +13,16 @@ Rails.application.routes.draw do
   get "/organizations/:id", to: 'homes#index'
   get "/organizations/:id/users/:id", to: 'homes#index'
 
+  namespace :user do
+      root to: "welcome#index"
+  end
+
   namespace :api do
     namespace :v1 do
       resources :users, only: [:index, :show]
-    end
-  end
-
-  namespace :api do
-    namespace :v1 do
       resources :organizations, only: [:index, :show] do
         resources :users, only: [:show]
       end
-    end
-  end
-
-  resources :api do
-    resources :v1 do
-      resources :messages do
-        member do
-          post :new
-        end
-      end
-    end
-  end
-
-  namespace :api do
-    namespace :v1 do
       resources :conversations do
         member do
           post :reply
@@ -48,6 +32,11 @@ Rails.application.routes.draw do
         collection do
           get :trashbin
           post :empty_trash
+        end
+      end
+      resources :messages do
+        member do
+          post :new
         end
       end
     end
