@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
       organizations_path
     end
   end
-  
+
   def after_sign_up_path_for(resource)
     if resource.role.downcase != "volunteer"
       users_path

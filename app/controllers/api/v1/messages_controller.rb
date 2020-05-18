@@ -8,10 +8,10 @@ class Api::V1::MessagesController < ApplicationController
   #   render json: @message
   # end
 
-  def create
-    @recipient = User.find(params[:user])
-    current_user.send_message(@recipient, params[:body], params[:subject])
-    flash[:notice] = "Message has been sent!"
-    redirect_to :conversations
-  end
+  # def create
+  #   @recipient = User.find(params[:user])
+  #   current_user.send_message(@recipient, params[:body], params[:subject])
+  #   flash[:notice] = "Message has been sent!"
+  #   redirect_to :conversations
+  # end
 end

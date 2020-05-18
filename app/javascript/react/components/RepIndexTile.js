@@ -7,7 +7,7 @@ const RepIndexTile = props => {
   return(
     <div className="boxout">
       <h5 className="names-big">
-        <Link to={`/organizations/${props.orgId}/users/${props.representative.id}`}>{name}</Link>
+        <Link to={`/users/${props.representative.id}`}>{name}</Link>
       </h5>
     </div>
   )

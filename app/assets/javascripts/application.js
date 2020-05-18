@@ -27,3 +27,11 @@ $(function(){
 
    setTimeout(removeFlashMessages, flashDurationInSeconds * 1000);
 })
+
+$('select[name="user[role]"').change(function() {
+    $('#orgs').toggle();
+});
+
+// <%= f.collection_radio_buttons :is_revision, [[false, 'Post'] ,[true, 'Revision']], :first, :last %>
+// <%= f.input :revision_id, collection: @originals, :input_html => {:id => 'revision'} %>
+// <%= f.input :title, :input_html => { :maxlength => '50', :placeholder => 'Title', :id => 'title'} %>

@@ -14,12 +14,12 @@ class User < ApplicationRecord
     role == "admin"
   end
 
-  def name
-    return '#{first_name} #{last_name}'
+  def mailboxer_name
+    self.first_name
   end
 
   def mailboxer_email(object)
-    return self.email
+    self.email
   end
 
 end

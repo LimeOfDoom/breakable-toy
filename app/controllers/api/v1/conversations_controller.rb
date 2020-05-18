@@ -3,24 +3,22 @@ class Api::V1::ConversationsController < ApplicationController
   before_action :mailbox, :conversation
   before_action :check_current_user_in_conversation, :only => [:show, :update, :destroy]
 
-  def index
-    @user = User.find(params[:id])
-    conversation_messages = conversation.messages.order(created_at: :desc)
-    render json: conversation_messages
+  def create
+    recipients = User.where(id: conversation_params[:recipients])
+    conversation = current_user.send_message(recipients, conversation_params[:body], conversation_params[:subject]).conversation
   end
 
   def show
-    user = User.find(params[:id])
     conversation_messages = conversation.messages.order(created_at: :desc)
     render json: conversation_messages
   end
 
-   def reply
+  def reply
     current_user.reply_to_conversation(conversation, conversation_params[:body])
   end
 
   # def trashbin
-  #   @trash ||= current_user.mailbox.trash.all
+  #   trash ||= current_user.mailbox.trash.all
   # end
 
   # def trash
@@ -35,8 +33,8 @@ class Api::V1::ConversationsController < ApplicationController
 
   private
 
-  def target_mailbox
-    @target_mailbox ||= @user.mailbox
+  def conversation_params
+    params.require(:conversation).permit(:subject, :body, recipients:[])
   end
 
   def mailbox

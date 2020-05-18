@@ -11,7 +11,6 @@ Rails.application.routes.draw do
 
   get "/organizations", to: 'homes#index'
   get "/organizations/:id", to: 'homes#index'
-  get "/organizations/:id/users/:id", to: 'homes#index'
 
   namespace :user do
       root to: "welcome#index"
@@ -20,9 +19,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, only: [:index, :show]
-      resources :organizations, only: [:index, :show] do
-        resources :users, only: [:show]
-      end
+      resources :organizations, only: [:index, :show]
       resources :conversations do
         member do
           post :reply

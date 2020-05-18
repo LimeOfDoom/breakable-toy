@@ -6,7 +6,18 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def show
-    render json: User.find(params[:id])
+    user = User.find(params[:id])
+    user_conversations = user.mailbox.inbox
+    if user_conversations.empty?
+      render json: {
+        user: serialized_data(user, UserSerializer)
+      }
+    else
+      render json: {
+        user: serialized_data(user, UserSerializer),
+        messages: user_conversations[0].messages.order(created_at: :desc)
+      }
+    end
   end
 
   private
