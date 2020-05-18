@@ -33,6 +33,7 @@ const OrgShowContainer = props => {
   }, [])
 
   const repList = representatives.map(representative => {
+    if (representative.role.toLowerCase() == "representative" )
     return(
       <RepIndexTile
         key={representative.id}

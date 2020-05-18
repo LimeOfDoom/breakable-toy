@@ -5,12 +5,28 @@ import RepShowTile from './RepShowTile'
 
 const RepShowContainer = props => {
   const [errors, setErrors] = useState(null)
-  const [representative, setRepresentative] = useState({})
+  const [representative, setRepresentative] = useState({
+    id: "",
+    email: "",
+    first_name: "",
+    last_name: "",
+    organization: "",
+    role: "",
+    created_at: "",
+    updated_at: ""
+  })
+  const [messages, setMessages] = useState()
 
   const repId = props.match.params.id
   const orgId = representative.organization_id
+  let messageList = []
+  let messageForm = ""
 
-  useEffect(()=> {
+  uuseEffect(()=> {
+    getUser()
+  }, [])
+
+  const getUser = () => {
     fetch(`/api/v1/users/${repId}`, {
       credentials: "same-origin"
     })
@@ -18,25 +34,65 @@ const RepShowContainer = props => {
       if(response.ok) {
         return response
       } else {
-        let errorMessage = `${response.status} (${response.statusText})`
-          error = new Error(errorMessage)
-        throw(error)
+        if(response.status === 404){
+          setRedirect(true)
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`
+          let error = new Error(errorMessage)
+          throw(error)
+        }
       }
     })
     .then(response => response.json())
     .then(parsedRepresentative => {
-      setRepresentative(parsedRepresentative.user)
+      setRepresentative(parsedRepresentative.user.user)
+      setMessages(parsedRepresentative.messages)
     })
     .catch(error => console.error(`Error in fetch: ${errorMessage}`))
-  }, [])
+  }
 
-  return(
-    <div className="gimme-space">
-      <div className="callout">
-        {errors}
-        <RepShowTile
-          representative={representative}
+  if (messages != null) {
+    messageList = messages.map(message => {
+      return (
+        <MessageTile
+          key={message.id}
+          body={message.body}
+          senderId={message.sender_id}
+          currentUserId={repId}
         />
+      )
+    })
+  }
+
+  if (messages != null) {
+    messageForm = <MessageForm
+    conversationId={messages[0].conversation_id}
+    getUser={getUser}
+    />
+  }
+
+  if(redirect) {
+   return <Redirect to={`/users/${repId}`} />
+  }
+
+  return (
+    <div>
+      <div className="gimme-space">
+        <div className="callout">
+          <div>
+            {errors}
+            <RepShowTile
+            representative={representative}
+            id={repId}
+            />
+          </div>
+          <div className="message-outline">
+            {messageList}
+          </div>
+          <div>
+            {messageForm}
+          </div>
+        </div>
       </div>
       <div className="bottom-bar">
         <p>

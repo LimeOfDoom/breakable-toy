@@ -1,3 +1,8 @@
+$mint: #A2E3C4;
+$transparent-mint: #A1E3C3;
+$eagle: #004E64;
+$transparent-eagle: #005066;
+
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
 
@@ -69,6 +74,12 @@ a:hover {
   font-weight: 700;
 }
 
+.names-small {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  color: #F4F4ED
+}
+
 .center-this {
   margin: auto;
   margin-top: 30px;
@@ -91,6 +102,23 @@ a:hover {
   padding-bottom: 30px;
 }
 
-.cell {
-  margin: 20px 20px 20px 50px;
+.message {
+  background-color: $transparent-mint;
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  color: #004E64;
+
+  &.text-right {
+    background-color: $transparent-eagle;
+    padding-right: 0.5rem;
+    text-align: right;
+    color: #F4F4ED;
+  }
+}
+
+.message-outline {
+  margin: 15px 15px 15px 15px;
+  color: #F4F4ED;
+  padding: 50px 5px 50px 5px;
+  border: thick double #004E64;
 }
